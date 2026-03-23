@@ -20,5 +20,14 @@ def correcct():
 @app.route("/wrong", methods=["get","post"])
 def wrong():
     return(render_template("wrong.html"))
+
+@app.route("/econ", methods=["get","post"])
+def econ():
+    return(render_template("econ.html"))
+
+@app.route("/foodExp", methods=["get","post"])
+def foodExp():
+    return(render_template("foodExp.html"))
+
 if __name__ == "__main__":
     app.run()
