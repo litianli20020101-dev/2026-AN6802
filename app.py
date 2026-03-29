@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
-
+import joblib
+model=joblib.load("foodexp.pkl")
 app = Flask(__name__)
 
 @app.route("/", methods=["get","post"])
@@ -27,7 +28,9 @@ def econ():
 
 @app.route("/foodExp", methods=["get","post"])
 def foodExp():
-    return(render_template("foodExp.html"))
+    q =float(request.form.get("q"))
+    r =model.predict([[q]])
+    return(render_template("foodExp.html",r=r[0][0]))
 
 if __name__ == "__main__":
     app.run()
